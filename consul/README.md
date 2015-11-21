@@ -41,7 +41,7 @@ docker run --name node-consul \
 
 This synchronize the configuration files in Consul defined in the KV folder ```app``` in the local directory ```/app/etc``` (see [fileconsul script](etc/periodic/1min/fileconsul)).
 
-The Node process is in charge to detect the changes made in the ```/app/etc``` directory and [reload](http://stackoverflow.com/questions/1972242/auto-reload-of-files-in-node-js) the comfiguration.
+The Node process is in charge to detect the changes made in the ```/app/etc``` directory and [reload](http://stackoverflow.com/questions/1972242/auto-reload-of-files-in-node-js) the configuration.
 
 # Build
 
