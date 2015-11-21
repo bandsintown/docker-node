@@ -1,4 +1,4 @@
-# Consul Java image
+# Consul Node image
 
 This image inherits from the ```1science/node``` image adding support to manage configuration through [Consul](https://consul.io/)
 
@@ -35,7 +35,7 @@ docker run --name node-consul \
 -e CONSUL_URL=localhost:8500 \
 -e FILECONSUL_PREFIX=app \
 -e FILECONSUL_DC=local \
--e FILECONSUL_BASEPATH=/app/etc\
+-e FILECONSUL_BASEPATH=/app/etc \
 -d 1science/node:consul
 ```
 
