@@ -1,10 +1,14 @@
 #!/usr/bin/with-contenv sh
 set -e
 
-CONSUL_URL=${CONSUL_URL:-consul.service.consul:8500}
-
-if [ -d /etc/consul-template/conf ]; then
-  exec consul-template \
-       -consul ${CONSUL_URL} \
-       -config "/etc/consul-template/conf"
+if [ -z "$CONSUL_URL" ]; then
+  echo "CONSUL_URL environment variable must be set."
+  exit 0
 fi
+
+if [ ! -d /etc/consul-template/conf ]; then
+  echo "Consul template configuration in /etc/consul-template/conf is missing."
+  exit 0
+fi
+
+exec consul-template -consul ${CONSUL_URL} -config "/etc/consul-template/conf"
