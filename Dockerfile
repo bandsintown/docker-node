@@ -21,6 +21,6 @@ RUN apk update && apk-install make gcc g++ python linux-headers paxctl libgcc li
   rm -rf /node-v${NODE_VERSION} \
     /usr/share/man /tmp/* /var/cache/apk/* /root/.npm \
     /usr/lib/node_modules/npm/man /usr/lib/node_modules/npm/doc /usr/lib/node_modules/npm/html && \
-  echo -ne "- with Node.js `node --version" >> /root/.built
+  echo -ne "- with Node.js `node --version`" >> /root/.built
 
 CMD [ "bash" ]
