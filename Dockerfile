@@ -20,6 +20,7 @@ RUN apk update && apk-install make gcc g++ python linux-headers paxctl libgcc li
   find /usr/lib/node_modules/npm -name test -o -name .bin -type d | xargs rm -rf && \
   rm -rf /node-v${NODE_VERSION} \
     /usr/share/man /tmp/* /var/cache/apk/* /root/.npm \
-    /usr/lib/node_modules/npm/man /usr/lib/node_modules/npm/doc /usr/lib/node_modules/npm/html
+    /usr/lib/node_modules/npm/man /usr/lib/node_modules/npm/doc /usr/lib/node_modules/npm/html && \
+  echo -ne "- with Node.js `node --version" >> /root/.built
 
 CMD [ "bash" ]
