@@ -1,7 +1,7 @@
 #
 # Node JS image with Consul Template and Fileconsul
 #
-FROM 1science/node:4.2.2
+FROM 1science/node:5.11.0
 
 # Consul template and fileconsul for configuration management
 ENV S6_OVERLAY_VERSION=1.9.1.3 CONSUL_TEMPLATE_VERSION=0.11.0 FILECONSUL_VERSION=0.1.1
