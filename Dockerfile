@@ -5,7 +5,7 @@
 FROM 1science/alpine:3.1
 
 # Node and NPM version
-ENV NODE_VERSION=4.2.2 NPM_VERSION=3.4.1
+ENV NODE_VERSION=5.11.0 NPM_VERSION=3.8.3
 
 # Install Node and NPM
 RUN apk update && apk-install make gcc g++ python linux-headers paxctl libgcc libstdc++ && \
