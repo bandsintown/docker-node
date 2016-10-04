@@ -2,12 +2,12 @@
 # Node JS image
 #
 
-FROM 1science/alpine:3.1
+FROM 1science/alpine:3.4
 
-# Node and NPM version
-ENV NODE_VERSION=6.3.1 NPM_VERSION=3.10.5
+# Node version
+ENV NODE_VERSION=6.7.0
 
-# Install Node and NPM
+# Install Node
 RUN apk update && apk-install make gcc g++ python linux-headers paxctl libgcc libstdc++ && \
   curl -sSL https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}.tar.gz | tar -xz && \
   cd /node-v${NODE_VERSION} && \
@@ -15,8 +15,7 @@ RUN apk update && apk-install make gcc g++ python linux-headers paxctl libgcc li
   make -j$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) && \
   make install && \
   paxctl -cm /usr/bin/node && \
-  npm install -g npm@${NPM_VERSION} && \
-  apk del make gcc g++ python linux-headers paxctl libgcc libstdc+ && \
+  apk del make gcc g++ python linux-headers paxctl && \
   find /usr/lib/node_modules/npm -name test -o -name .bin -type d | xargs rm -rf && \
   rm -rf /node-v${NODE_VERSION} \
     /usr/share/man /tmp/* /var/cache/apk/* /root/.npm \

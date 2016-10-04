@@ -22,6 +22,6 @@ the root of your application directory (assuming your script is named
 `hello.js`):
 
 ```
-docker run -v ${PWD}:/app -w /app -it --rm 1science/node:4.2.2 node hello.js 
+docker run -v ${PWD}:/app -w /app -it --rm 1science/node:6.7 node hello.js 
 ```
 
