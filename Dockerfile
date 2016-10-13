@@ -2,7 +2,7 @@
 # Node JS image
 #
 
-FROM 1science/alpine:3.4
+FROM bandsintown/alpine:3.4
 
 # Node version
 ENV NODE_VERSION=6.7.0
