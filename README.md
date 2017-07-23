@@ -1,6 +1,11 @@
+[![dockeri.co](http://dockeri.co/image/bandsintown/node)](https://hub.docker.com/r/bandsintown/node/)
 
-
-## What is Node.js?
+[![Build status](https://badge.buildkite.com/f78e045c0b561ba33f80f3c996ccfe89b49ade24b832f92bfd.svg)](https://buildkite.com/bandsintown/docker-node)
+[![GitHub issues](https://img.shields.io/github/issues/bandsintown/docker-node.svg "GitHub issues")](https://github.com/bandsintown/docker-node)
+[![GitHub stars](https://img.shields.io/github/stars/bandsintown/docker-node.svg "GitHub stars")](https://github.com/bandsintown/docker-node)
+[![Docker layers](https://images.microbadger.com/badges/image/bandsintown/node.svg)](http://microbadger.com/images/bandsintown/node)
+	
+# What is Node.js?
 
 ![logo](https://github.com/bandsintown/docker-node/raw/latest/logo.png)
 
@@ -12,9 +17,9 @@ real-time applications that run across distributed devices.
 
 See: http://nodejs.org
 
-## Usage
+# Usage
 
-# How to use this image
+## How to use this image
 
 
 To run a single script, you can mount it in a volume under `/app`. From
@@ -22,14 +27,8 @@ the root of your application directory (assuming your script is named
 `hello.js`):
 
 ```
-docker run -v ${PWD}:/app -w /app -it --rm bandsintown/node:6.7 node hello.js 
+docker run -v ${PWD}:/app -w /app -it --rm bandsintown/node node hello.js 
 ```
-
-# Build
-
-This project is configured as an [automated build in Dockerhub](https://hub.docker.com/r/bandsintown/alpine/).
-
-Each branch give the related image tag.  
 
 # License
 
