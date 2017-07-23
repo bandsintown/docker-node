@@ -7,7 +7,7 @@
 	
 # What is Node.js?
 
-![logo](https://github.com/bandsintown/docker-node/raw/latest/logo.png)
+![logo](https://github.com/bandsintown/docker-node/raw/master/logo.png)
 
 
 Node.js is a platform built on Chrome's JavaScript runtime for easily building
