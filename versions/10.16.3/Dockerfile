@@ -19,19 +19,16 @@ RUN addgroup -g 1000 node \
         python \
   # gpg keys listed at https://github.com/nodejs/node#release-team
   && for key in \
+    4ED778F539E3634C779C87C6D7062848A1AB005C \
+    74F12602B6F1C4E913FAA37AD3A89613643B6201 \
+    8FCCA13FEF1D0C2E91008E09770F7A9A5AE15600 \
+    C82FA3AE1CBEDC6BE46B9360C43CEC45C17AB93C \
+    A48C2BEE680E841632CD4E44F07496B3EB3C1762 \
+    108F52B48DB57BB0CC439B2997B01419BD92F80A \
+    B9E2F5981AA6E0CD28160D9FF13993A75599653C \
     9554F04D7259F04124DE6B476D5A82AC7E37093B \
-    94AE36675C464D64BAFA68DD7434390BDBE9B9C5 \
-    FD3A5288F042B6850C66B31F09FE44734EB7990E \
-    71DCFD284A79C3B38668286BC97EC7A07EDE3FC1 \
-    DD8F2338BAE7501E3DD5AC78C273792F7D83545D \
-    B9AE9905FFD7803F25714661B63B535A4C206CA9 \
-    C4F0DFFF4E8C1A8236409D08E73BC641CC11F4C8 \
-    56730D5401028683275BD23C23EFEFE93C4CFFFE \
   ; do \
-    gpg --keyserver pgp.mit.edu --recv-keys "$key" || \
-    gpg --keyserver keyserver.pgp.com --recv-keys "$key" || \
-    gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key" || \
-    gpg --keyserver pool.sks-keyservers.net --recv-keys "$key" ; \
+    gpg --keyserver ipv4.pool.sks-keyservers.net --recv-keys "$key";  \
   done \
     && curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION.tar.xz" \
     && curl -SLO --compressed "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
