@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# A Docker image is a combination of REGISTRY/NAMESPACE/REPOSITORY[:TAG].
+# e.g. docker.io/bandsintown/alpine:3.19.1
+registry=dockerhub
+namespace=bandsintown
+repository=node
+
+# The base image our image is based on
+parent=alpine
+
+# Any variants of our image
+# Test images are considered a variant even if we won't publish them
+variants=(test)
