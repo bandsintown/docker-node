@@ -1,0 +1,87 @@
+#!/usr/bin/env bash
+set +x
+set -e
+
+image_name="bandsintown/node"
+
+# Define valid commands
+function parse_opts() {
+    until [ "$1" = "" ] ; do
+        local option="${1}"
+
+        case $option in
+            --version)
+                version_full="${2}"
+                [[ $version_full =~ ^[0-9]+\.[0-9]+(\.[0-9]+)* ]] || { error "Invalid version format"; exit 1; }
+                ;;
+            --variant)
+                variant="${2}"
+                [[ $variant == "test" ]] || { error "Invalid variant. Valid variants: test"; exit 1; }
+                ;;
+        esac
+
+        shift
+    done
+}
+
+function run_build() {
+    # Build image
+    test -n "${version_full}" || { echo "Specify the version you want to build"; exit 1; }
+    echo "==> Building image for ${tagged_image_name} ..."
+    run_command="docker build --file versions/${version_full}/Dockerfile --tag ${tagged_image_name} ."
+
+    ${run_command}
+
+    # Build Test image
+    if [[ -n ${variant} ]]; then
+        echo "==> Building image ${tagged_image_name}-${variant}..."
+        run_command="docker build --file versions/${version_full}/${variant}/Dockerfile --tag ${tagged_image_name}-${variant} ."
+        ${run_command}
+    fi
+}
+
+function run_tests() {
+    test -n "${version_full}" || { echo "Specify the version you want to test"; exit 1; }
+    echo "==> Running tests for ${tagged_image_name} ..."
+
+    run_command="docker run --rm -e VERSION=${version_full} ${tagged_image_name}-test bats ."
+    ${run_command}
+}
+
+# Check command
+command="$1"
+
+# Parse options
+parse_opts "$@"
+
+tagged_image_name="${image_name}:${version_full}"
+
+# Run the command
+command="$1"
+
+echo "Command: $command"
+
+# Parse options
+parse_opts "$@"
+
+
+tagged_image_name="${image_name}:${version_full}"
+
+# Run the command
+case "${command}" in
+    help|-h|--help)
+        help
+        ;;
+    build)
+        shift
+        run_build "$@"
+        ;;
+    test)
+        shift
+        run_tests "$@"
+        ;;
+    *)
+        echo "Invalid command"
+        help
+        ;;
+esac
