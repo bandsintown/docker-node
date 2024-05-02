@@ -1,0 +1,32 @@
+env:
+  PIPELINE_NAME: docker-node
+
+steps:
+  - block: ":question::hammer: What version do you want to release?"
+    fields:
+      - select: Select a version to release
+        key: selected-version
+        required: true
+        options:
+          - label: v18.20.2
+            value: 18.20.2
+          - label: v20.12.2
+            value: 20.12.2
+
+  - label: Trigger Build and Release pipeline
+    command: |
+      VERSION="$$(buildkite-agent meta-data get selected-version --default 'NA')"
+
+      cat <<- YAML | buildkite-agent pipeline upload
+      steps:
+        - trigger: ${PIPELINE_NAME}
+          async: true
+          label: ":construction::building_construction: Trigger release for version $$VERSION"
+          build:
+            commit: "${BUILDKITE_COMMIT}"
+            branch: "${BUILDKITE_BRANCH}"
+            env:
+              VERSION: "$$VERSION"
+              VERSION_IS_LATEST: yes
+              DEPLOY_SERVICE: release
+      YAML
