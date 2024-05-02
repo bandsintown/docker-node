@@ -27,6 +27,6 @@ steps:
             branch: "${BUILDKITE_BRANCH}"
             env:
               VERSION: "$$VERSION"
-              VERSION_IS_LATEST: yes
+              VERSION_IS_LATEST: "yes"
               DEPLOY_SERVICE: release
       YAML
