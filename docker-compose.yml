@@ -1,0 +1,6 @@
+services:
+  node:
+    image: bandsintown/node:${VERSION}
+    build:
+      context: .
+      dockerfile: ./versions/${VERSION}/Dockerfile

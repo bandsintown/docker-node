@@ -1,0 +1,21 @@
+env:
+  IMAGE: bandsintown/node
+
+steps:
+  - label: ":docker: Build and Push Node v${VERSION}"
+    if: build.env("VERSION") != "NA"
+    plugins:
+      - docker-compose#v5.2.0:
+          build: node
+          push:
+            - node:${IMAGE}:${VERSION}-${BUILDKITE_COMMIT:0:7}
+
+  - wait
+
+  - label: ":docker: Tag as latest and Push Node v${VERSION}"
+    if: build.env("VERSION_IS_LATEST") == "yes"
+    plugins:
+      - docker-compose#v5.2.0:
+          push:
+            - node:${IMAGE}:${VERSION}
+            - node:${IMAGE}:latest

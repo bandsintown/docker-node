@@ -1,4 +1,4 @@
-FROM bandsintown/node:16.13.2
+FROM bandsintown/node:20.12.2
 
 ENV BATS_VERSION=0.4.0 DOCKERIZE_VERSION=v0.2.0
 
