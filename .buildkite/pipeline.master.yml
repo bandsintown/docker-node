@@ -12,6 +12,8 @@ steps:
             value: 18.20.2
           - label: v20.12.2
             value: 20.12.2
+          - label: v24.18.0
+            value: 24.18.0
 
   - label: Trigger Build and Release pipeline
     command: |
