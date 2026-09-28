@@ -10,14 +10,24 @@ steps:
         options:
           - label: v18.20.8 (EOL)
             value: 18.20.8
+          - label: v18.20.8-alpine-3.24.0 (EOL)
+            value: 18.20.8-alpine-3.24.0
           - label: v20.20.2 (EOL)
             value: 20.20.2
+          - label: v20.20.2-alpine-3.24.0 (EOL)
+            value: 20.20.2-alpine-3.24.0
           - label: v22.23.2 (LTS)
             value: 22.23.2
+          - label: v22.23.2-alpine-3.24.0 (LTS)
+            value: 22.23.2-alpine-3.24.0
           - label: v24.19.0 (Current LTS)
             value: 24.19.0
+          - label: v24.19.0-alpine-3.24.0 (Current LTS)
+            value: 24.19.0-alpine-3.24.0
           - label: v26.5.0 (Current)
             value: 26.5.0
+          - label: v26.5.0-alpine-3.24.0 (Current)
+            value: 26.5.0-alpine-3.24.0
 
   - label: Trigger Build and Release pipeline
     command: |
