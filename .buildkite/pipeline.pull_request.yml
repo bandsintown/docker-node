@@ -24,6 +24,10 @@ steps:
             value: 24.19.0
           - label: v24.19.0-alpine-3.24.0 (Current LTS)
             value: 24.19.0-alpine-3.24.0
+          - label: v24.22.1 (Current LTS)
+            value: 24.22.1
+          - label: v24.22.1-alpine-3.24.0 (Current LTS)
+            value: 24.22.1-alpine-3.24.0
           - label: v26.5.0 (Current)
             value: 26.5.0
           - label: v26.5.0-alpine-3.24.0 (Current)
